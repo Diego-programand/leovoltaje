@@ -1,0 +1,24 @@
+{
+  "name": "Grupo Leovoltaje - Soluciones Eléctricas Profesionales",
+  "short_name": "Leovoltaje",
+  "description": "Instalaciones eléctricas, domótica, energía solar y más. Soluciones profesionales para tu hogar o empresa.",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#1c0e91",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary-1: #381ce3;
+  --color-primary-2: #2a15ba;
+  --color-primary-3: #1c0e91;
+  --color-primary-4: #0e0768;
+  --color-primary-5: #00003f;
+
+  --color-text-dark: #0f172a;
+  --color-text-light: #f8fafc;
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #0f172a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth !important;
+  }
+
+  /* Evita que el título quede oculto detrás del header */
+  section[id] {
+    scroll-margin-top: 100px;
+  }
+
+  body {
+    @apply bg-white text-slate-900;
+    font-family: var(--font-bree-serif), serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Animaciones */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.duration-800 {
+  transition-duration: 800ms;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite !important;
+  /* No se detiene nunca */
+}
+
+/* Bloqueo de selección en toda la sección para que en móvil se sienta como un objeto sólido */
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Ajuste para que Lenis y el scroll nativo no peleen */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Evita que los títulos queden tapados por el Header fijo */
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+/* Personalización de la barra de scroll (Cromado/Windows) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #381ce3;
+  /* Tu azul primary-1 */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00003f;
+  /* Tu azul primary-5 */
+}
