@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Bree_Serif } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "./components/sections/SmoothScroll";
+import ScrollReset from "./components/utils/ScrollReset"; // 👈 Crearemos este pequeño componente
 
 const breeSerif = Bree_Serif({
   weight: "400",
@@ -9,26 +9,18 @@ const breeSerif = Bree_Serif({
   display: "swap",
   variable: "--font-bree-serif",
 });
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://grupoleovoltaje.com"), // Cambiar a dominio real
+  metadataBase: new URL("https://grupoleovoltaje.com"),
   title: {
     default: "Grupo Leovoltaje - Soluciones Eléctricas Profesionales en Colombia",
     template: "%s | Grupo Leovoltaje"
   },
   description: "Servicios profesionales de instalaciones eléctricas, domótica, energía solar, CCTV y más. Soluciones integrales para hogares y empresas en Colombia con certificación RETIE.",
   keywords: [
-    "instalaciones eléctricas",
-    "domótica",
-    "energía solar",
-    "paneles solares",
-    "CCTV",
-    "certificación RETIE",
-    "planos eléctricos",
-    "mantenimiento eléctrico",
-    "subestaciones eléctricas",
-    "redes de voz y datos",
-    "hogares inteligentes",
-    "Colombia"
+    "instalaciones eléctricas", "domótica", "energía solar", "paneles solares",
+    "CCTV", "certificación RETIE", "planos eléctricos", "mantenimiento eléctrico",
+    "subestaciones eléctricas", "redes de voz y datos", "hogares inteligentes", "Colombia"
   ],
   authors: [{ name: "Grupo Leovoltaje" }],
   creator: "Grupo Leovoltaje",
@@ -47,7 +39,7 @@ export const metadata: Metadata = {
     description: "Servicios profesionales de instalaciones eléctricas, domótica, energía solar y más para hogares y empresas en Colombia.",
     images: [
       {
-        url: "/og-image.jpg", // Crearemos esta imagen después
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Grupo Leovoltaje - Soluciones Eléctricas",
@@ -82,7 +74,7 @@ export const metadata: Metadata = {
     ],
   },
   verification: {
-    google: "tu-codigo-de-verificacion-aqui", // Agregar después de crear Google Search Console
+    google: "tu-codigo-de-verificacion-aqui",
   },
 };
 
@@ -94,9 +86,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${breeSerif.variable} antialiased`}>
-        <SmoothScroll>
-        {children}
-        </SmoothScroll>
+        <ScrollReset /> 
+
+          {children}
+
       </body>
     </html>
   );
