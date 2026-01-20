@@ -1,11 +1,12 @@
+import { LucideIcon } from 'lucide-react';
+
 export interface Service {
   id: string;
   title: string;
   description: string;
-  icon: string;
+  icon: LucideIcon; // Antes era string, ahora es el tipo de componente de Lucide
   slug: string;
 }
-
 export interface ContactForm {
   name: string;
   email: string;

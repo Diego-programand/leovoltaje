@@ -96,7 +96,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>Pagina web: OwlyDev</p>
-          <p>&copy; {currentYear} {COMPANY_INFO.name}. Todos los derechos reservados.</p>
+          <p>&copy; 2023 {COMPANY_INFO.name}. Todos los derechos reservados.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">Política de Privacidad</a>
             <a href="#" className="hover:text-white transition-colors">Términos de Servicio</a>

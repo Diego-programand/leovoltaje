@@ -1,142 +1,188 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { SERVICES } from '@/app/lib/constants';
-import type { Variants } from 'framer-motion';
+import { getCarouselImageUrl } from '@/app/lib/cloudinary-config';
 
 export default function ServicesCarousel() {
     const [index, setIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const [progress, setProgress] = useState(0);
+    const [touchStart, setTouchStart] = useState(0);
+    const [showHint, setShowHint] = useState(true);
 
-    const DURATION = 3000; // 3 segundos
+    const AUTO_TIME = 10000;
 
-    // Función para cambiar de slide
+    // Función segura para calcular el siguiente índice
+    const wrap = (nextIndex: number) => {
+        const len = SERVICES.length;
+        return ((nextIndex % len) + len) % len;
+    };
+
     const paginate = useCallback((newDirection: number) => {
         setDirection(newDirection);
-        setIndex((prevIndex) => (prevIndex + newDirection + SERVICES.length) % SERVICES.length);
-        setProgress(0); // Reiniciar barra al cambiar
+        // Usamos la versión funcional de setState para evitar saltos por asincronía
+        setIndex((prev) => wrap(prev + newDirection));
+        setShowHint(false);
     }, []);
 
-    // Lógica del Temporizador y Barra de Progreso
     useEffect(() => {
         if (isPaused) return;
-
-        const interval = 30; // Actualización suave cada 30ms
-        const step = (interval / DURATION) * 100;
-
         const timer = setInterval(() => {
-            setProgress((prev) => {
-                if (prev >= 100) {
-                    paginate(1);
-                    return 0;
-                }
-                return prev + step;
-            });
-        }, interval);
-
+            paginate(1);
+        }, AUTO_TIME);
         return () => clearInterval(timer);
-    }, [index, isPaused, paginate]);
+    }, [isPaused, paginate]);
 
-    // Reset total al interactuar manualmente
     const handleManualNav = (dir: number) => {
-        setProgress(0);
+        setIsPaused(true);
         paginate(dir);
     };
 
-    const slideVariants: Variants = {
-        enter: (direction: number) => ({
-            x: direction > 0 ? '100%' : '-100%',
-            opacity: 0,
-        }),
-        center: {
-            x: 0,
-            opacity: 1,
-            transition: { x: { type: "tween", duration: 0.6, ease: "easeInOut" }, opacity: { duration: 0.4 } }
+    const textVariants: Variants = {
+        enter: { y: 30, opacity: 0 },
+        center: { 
+            y: 0, 
+            opacity: 1, 
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
         },
-        exit: (direction: number) => ({
-            x: direction < 0 ? '100%' : '-100%',
-            opacity: 0,
-            transition: { x: { type: "tween", duration: 0.6, ease: "easeInOut" }, opacity: { duration: 0.4 } }
-        }),
+        exit: { 
+            y: -20, 
+            opacity: 0, 
+            transition: { duration: 0.3 } 
+        }
     };
 
     return (
         <section
-            className="relative h-[85vh] w-full overflow-hidden bg-primary-5"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            className="relative h-[85vh] lg:h-[80vh] w-full overflow-hidden bg-black"
+            onTouchStart={(e) => {
+                setTouchStart(e.targetTouches[0].clientX);
+                setShowHint(false);
+            }}
+            onTouchEnd={(e) => {
+                const touchEnd = e.changedTouches[0].clientX;
+                const distance = touchStart - touchEnd;
+                if (distance > 50) handleManualNav(1);
+                if (distance < -50) handleManualNav(-1);
+            }}
         >
+            {/* HINT TÁCTIL */}
+            <AnimatePresence>
+                {showHint && (
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="lg:hidden absolute inset-0 z-[60] flex items-center justify-center pointer-events-none"
+                    >
+                        <motion.div 
+                            animate={{ x: [-20, 20, -20] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="bg-black/30 backdrop-blur-md p-5 rounded-full border border-white/20"
+                        >
+                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                            </svg>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
-                    key={index}
-                    custom={direction}
-                    variants={slideVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    className="absolute inset-0 flex items-center"
+                    key={index} // Al cambiar el index, AnimatePresence sabe exactamente qué slide entra
+                    className="absolute inset-0 w-full h-full"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.6 }}
                 >
-                    {/* FONDO CON OVERLAY (Más oscuro en móvil para Bree Serif) */}
-                    <div
-                        className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
-                        style={{ backgroundImage: `url('/images/carousel/service-${index + 1}.jpg')` }}
+                    {/* IMAGEN DE FONDO */}
+                    <motion.div
+                        initial={{ scale: 1.15 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 10, ease: "linear" }} // Zoom ultra lento y fluido
+                        className="absolute inset-0 w-full h-full bg-cover"
+                        style={{ 
+                            backgroundImage: `url('${getCarouselImageUrl(index)}')`,
+                            backgroundPosition: '80% center' 
+                        }}
                     >
-                        <div className="absolute inset-0 bg-black/80 lg:bg-transparent lg:bg-gradient-to-r lg:from-primary-5 lg:via-primary-5/70 lg:to-transparent" />
-                    </div>
+                        <div className="absolute inset-0 bg-black/50 lg:bg-transparent lg:bg-gradient-to-r lg:from-black lg:via-black/60 lg:to-transparent" />
+                    </motion.div>
 
-                    <div className="relative z-10 container mx-auto px-6">
-                        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 items-center">
-
-                            {/* TEXTOS */}
-                            <div className="text-white text-center lg:text-left space-y-6">
-                                <div className="space-y-2">
-                                    <span className="text-white text-s font-bold tracking-widest uppercase">Servicio {index + 1}</span>
-                                    <h2 className="text-3xl sm:text-5xl lg:text-7xl font-bold font-bree leading-tight">
-                                        {SERVICES[index].title}
-                                    </h2>
+                    {/* TEXTO */}
+                    <div className="relative z-10 container mx-auto px-6 h-full flex items-center">
+                        <div className="max-w-4xl">
+                            <motion.div
+                                variants={textVariants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                className="space-y-6"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <div className="h-[2px] w-12 bg-primary-1 hidden lg:block" />
+                                    <span className="text-white font-bold tracking-[0.3em] text-[10px] lg:text-sm uppercase opacity-80">
+                                        Grupo Leovoltaje
+                                    </span>
                                 </div>
-                                <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                                    {SERVICES[index].description}
+
+                                <h2 className="text-4xl sm:text-6xl lg:text-8xl font-bold font-bree text-white leading-[1.1]">
+                                    {SERVICES[index]?.title}
+                                </h2>
+
+                                <p className="text-lg lg:text-2xl text-gray-200 max-w-2xl leading-relaxed font-light">
+                                    {SERVICES[index]?.description}
                                 </p>
-                                <a
-                                    href={`/service/${SERVICES[index].slug}`}
-                                    className="inline-block bg-primary-1 hover:bg-primary-2 text-white px-8 py-4 rounded-full font-bold transition-all shadow-xl active:scale-95"
-                                >
-                                    VER MÁS INFORMACIÓN
-                                </a>
-                            </div>
 
-                            {/* IMAGEN ESTÁTICA BORDE 3PX */}
-                            <div className="w-full max-w-[300px] sm:max-w-[450px] lg:max-w-full mx-auto">
-                                <div className="relative aspect-square lg:aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border-[2px] border-white/30">
-                                    <img src={`/images/carousel/service-${index + 1}.jpg`} alt="" className="w-full h-full object-cover" />
+                                <div className="pt-4">
+                                    <a
+                                        href={`/service/${SERVICES[index]?.slug}`}
+                                        className="inline-block px-8 py-4 bg-primary-3 text-white font-bold rounded-sm hover:bg-primary-4 hover:scale-105 transition-transform active:scale-95 shadow-xl uppercase tracking-widest text-sm"
+                                    >
+                                        Ver detalles
+                                    </a>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </motion.div>
             </AnimatePresence>
 
-            {/* NAVEGACIÓN FLECHAS (Visibles en todo dispositivo) */}
-            <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 justify-between items-center z-40 flex lg:inset-x-8">
-                <button onClick={() => handleManualNav(-1)} className="p-3 lg:p-5 rounded-full bg-black/40 hover:bg-primary-1 text-white backdrop-blur-md border border-white/10 transition-all">
+            {/* BOTONES */}
+            <div className="absolute bottom-8 right-6 lg:bottom-12 lg:right-16 flex items-center z-50">
+                <button 
+                    onClick={() => handleManualNav(-1)}
+                    className="p-4 lg:p-6 text-white/50 hover:text-white transition-all bg-white/5 hover:bg-white/10 backdrop-blur-lg border border-white/10 rounded-l-md"
+                >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                 </button>
-                <button onClick={() => handleManualNav(1)} className="p-3 lg:p-5 rounded-full bg-black/40 hover:bg-primary-1 text-white backdrop-blur-md border border-white/10 transition-all">
+                <button 
+                    onClick={() => handleManualNav(1)}
+                    className="p-4 lg:p-6 text-white/50 hover:text-white transition-all bg-white/5 hover:bg-white/10 backdrop-blur-lg border border-white/10 border-l-0 rounded-r-md"
+                >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 </button>
             </div>
 
-            {/* BARRA DE PROGRESO INFERIOR */}
-            <div className="absolute bottom-0 left-0 w-full h-1.5 bg-white/10 z-50">
-                <motion.div
-                    className="h-full bg-primary-1"
-                    style={{ width: `${progress}%` }}
-                    transition={{ ease: "linear" }}
-                />
+            {/* INDICADORES (PIPS) */}
+            <div className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-4 z-50">
+                {SERVICES.map((_, idx) => (
+                    <button
+                        key={idx}
+                        onClick={() => {
+                            setDirection(idx > index ? 1 : -1);
+                            setIndex(idx);
+                            setIsPaused(true);
+                        }}
+                        className={`transition-all duration-500 ${
+                            idx === index ? 'h-10 w-[3px] bg-primary-1' : 'h-4 w-[2px] bg-white/20 hover:bg-white/40'
+                        }`}
+                    />
+                ))}
             </div>
         </section>
     );

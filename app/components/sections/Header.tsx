@@ -43,6 +43,7 @@ export default function Header() {
                                     }`}>
                                     {link.label}
                                 </a>
+
                                 {/* DESKTOP DROPDOWN LIST */}
                                 {link.label === 'Servicios' && (
                                     <AnimatePresence>
@@ -51,28 +52,32 @@ export default function Header() {
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: 10 }}
-                                                className="absolute left-0 mt-2 w-64 bg-white shadow-2xl rounded-l overflow-hidden py-2 border border-gray-100 z-50"
+                                                className="absolute left-0 mt-2 w-72 bg-white shadow-2xl rounded-sm overflow-hidden py-2 border border-gray-100 z-50"
                                             >
-                                                {SERVICES.map((service, idx) => (
-                                                    <li key={idx}>
-                                                        <a
-                                                            href={`/service/${service.slug}`}
-                                                            className="block px-4 py-3 text-sm text-black text-s hover:bg-primary-3/90 hover:text-white transition-colors font-sm"
-                                                        >
-                                                            <div className="flex items-center gap-3">
-                                                                <span className="text-xl">{service.icon}</span>
-                                                                <span>{service.title}</span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                ))}
+                                                {SERVICES.map((service, idx) => {
+                                                    // Asignamos el componente del icono a una variable con Mayúscula
+                                                    const ServiceIcon = service.icon;
+                                                    return (
+                                                        <li key={idx}>
+                                                            <a
+                                                                href={`/service/${service.slug}`}
+                                                                className="block px-4 py-3 text-sm text-black hover:bg-primary-1 hover:text-white transition-colors group/link"
+                                                            >
+                                                                <div className="flex items-center gap-3">
+                                                                    <ServiceIcon size={18} strokeWidth={2} className="text-primary-1 group-hover/link:text-white transition-colors" />
+                                                                    <span className="font-medium">{service.title}</span>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    );
+                                                })}
                                             </motion.ul>
                                         )}
                                     </AnimatePresence>
                                 )}
                             </li>
                         ))}
-                        <a href={`https://wa.me/${COMPANY_INFO.whatsapp}`} target="_blank" className="bg-primary-1 text-white px-6 py-2 rounded-xl font-sm hover:bg-primary-2 transition-easy shadow-lg active:scale-105 text-sm uppercase">
+                        <a href={`https://wa.me/${COMPANY_INFO.whatsapp}`} target="_blank" className="bg-primary-1 text-white px-6 py-2 rounded-xl font-sm hover:bg-primary-2 transition-all shadow-lg active:scale-105 text-sm uppercase">
                             WhatsApp
                         </a>
                     </ul>
@@ -106,7 +111,7 @@ export default function Header() {
                                                     {link.label}
                                                     <svg className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth={2} /></svg>
                                                 </button>
-                                                {/* MOBILE SERVICES LIST */}
+
                                                 <AnimatePresence>
                                                     {isServicesOpen && (
                                                         <motion.div
@@ -115,22 +120,25 @@ export default function Header() {
                                                             exit={{ opacity: 0, x: -10 }}
                                                             className="pl-4 space-y-1 bg-gray-50 rounded-lg py-2"
                                                         >
-                                                            {SERVICES.map((s, i) => (
-                                                                <a
-                                                                    key={i}
-                                                                    href={`/service/${s.slug}`}
-                                                                    onClick={() => {
-                                                                        setIsMobileMenuOpen(false);
-                                                                        setIsServicesOpen(false);
-                                                                    }}
-                                                                    className="block py-2 text-gray-600 hover:text-primary-3 font-medium text-sm transition-colors"
-                                                                >
-                                                                    <div className="flex items-center gap-2">
-                                                                        <span className="text-base">{s.icon}</span>
+                                                            {SERVICES.map((s, i) => {
+                                                                const MobIcon = s.icon;
+                                                                return (
+                                                                    // Dentro de SERVICES.map en el menú móvil
+                                                                    <motion.a
+                                                                        key={i}
+                                                                        href={`/service/${s.slug}`}
+                                                                        whileTap={{ scale: 0.95, backgroundColor: "rgba(0, 0, 0, 0.05)" }} // Efecto de presión
+                                                                        onClick={() => {
+                                                                            setIsMobileMenuOpen(false);
+                                                                            setIsServicesOpen(false);
+                                                                        }}
+                                                                        className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-600 font-medium text-sm transition-colors"
+                                                                    >
+                                                                        <MobIcon size={18} className="text-primary-1" />
                                                                         <span>{s.title}</span>
-                                                                    </div>
-                                                                </a>
-                                                            ))}
+                                                                    </motion.a>
+                                                                );
+                                                            })}
                                                         </motion.div>
                                                     )}
                                                 </AnimatePresence>

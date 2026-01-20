@@ -1,6 +1,6 @@
 // Configuración de Cloudinary
 const CLOUDINARY_BASE = 'https://res.cloudinary.com/dw7zhnbho/image/upload';
-const CLOUDINARY_VIDEO_BASE = 'https://res.cloudinary.com/dw7zhnbho/video/upload';
+const CLOUDINARY_VIDEO_BASE = 'https://res.cloudinary.com/dw7zhnbho/video/upload/ac_none';
 
 // Tipo para las imágenes/videos
 export interface CloudinaryAsset {
@@ -78,23 +78,23 @@ export const GALLERY_IMAGES: Record<string, CloudinaryAsset[]> = {
     { code: 'alwd4n', ext: 'jpg' },
   ],
   'instalaciones-electricas': [
-    { code: 'dmiycu', ext: 'jpg' },  // in-el17
-    { code: 'b2puzm', ext: 'jpg' },  // in-el16
-    { code: 'ob2vae', ext: 'jpg' },  // in-el15
-    { code: 'lk82pn', ext: 'jpg' },  // in-el14
-    { code: 'djqbu3', ext: 'jpg' },  // in-el13
-    { code: 'qgccar', ext: 'jpg' },  // in-el12
-    { code: 'qocu0m', ext: 'jpg' },  // in-el11
-    { code: 'fguzbd', ext: 'jpg' },  // in-el10
-    { code: 'zda9ki', ext: 'mp4', isVideo: true },  // in-el9 (video)
-    { code: 'uyatkq', ext: 'mp4', isVideo: true },  // in-el8 (video)
-    { code: 'tp6out', ext: 'jpg' },  // in-el7
-    { code: 'r0v4na', ext: 'jpg' },  // in-el6
-    { code: 't2lihx', ext: 'jpg' },  // in-el5
-    { code: 'olk7dq', ext: 'jpg' },  // in-el4
-    { code: 'qc1jyj', ext: 'jpg' },  // in-el3
-    { code: 'mfghsf', ext: 'jpg' },  // in-el2
-    { code: 'jcc1yj', ext: 'jpg' },  // in-el1
+    { code: 'jcc1yj', ext: 'jpg' },                  // in-el1
+    { code: 'mfghsf', ext: 'jpg' },                  // in-el2
+    { code: 'qc1jyj', ext: 'jpg' },                  // in-el3
+    { code: 'olk7dq', ext: 'jpg' },                  // in-el4
+    { code: 't2lihx', ext: 'jpg' },                  // in-el5
+    { code: 'r0v4na', ext: 'jpg' },                  // in-el6
+    { code: 'tp6out', ext: 'mp4', isVideo: true },                  // in-el7
+    { code: 'uyatkq', ext: 'mp4', isVideo: true },   // in-el8 (video)
+    { code: 'zda9ki', ext: 'jpg' },
+    { code: 'fguzbd', ext: 'jpg' },                  // in-el10
+    { code: 'qocu0m', ext: 'jpg' },                  // in-el11
+    { code: 'qgccar', ext: 'jpg' },                  // in-el12
+    { code: 'djqbu3', ext: 'jpg' },                  // in-el13
+    { code: 'lk82pn', ext: 'jpg' },                  // in-el14
+    { code: 'ob2vae', ext: 'jpg' },                  // in-el15
+    { code: 'b2puzm', ext: 'jpg' },                  // in-el16
+    { code: 'dmiycu', ext: 'jpg' },                  // in-el17
   ],
 };
 
@@ -159,36 +159,35 @@ export function getCarouselImageUrl(index: number): string {
 export function getHeroVideoUrl(serviceSlug: string): string {
   const asset = HERO_VIDEOS[serviceSlug];
   if (!asset) return '';
-  
+
   const folderName = serviceSlug === 'home' ? '' : serviceSlug;
   const fileName = serviceSlug === 'home' ? 'hero-background' : `${serviceSlug}-hero-background`;
-  
+
   return `${CLOUDINARY_VIDEO_BASE}/${fileName}_${asset.code}.${asset.ext}`;
 }
 
 /**
  * Obtiene todas las URLs de la galería de un servicio
  */
-export function getGalleryUrls(serviceSlug: string): Array<{url: string, isVideo: boolean}> {
+export function getGalleryUrls(serviceSlug: string): Array<{ url: string, isVideo: boolean }> {
   const assets = GALLERY_IMAGES[serviceSlug];
   if (!assets) return [];
-  
-  const folder = SERVICE_FOLDER_MAP[serviceSlug];
+
   const prefix = FILE_PREFIX_MAP[serviceSlug];
-  
+
   return assets.map((asset, index) => {
     const fileName = `${prefix}${index + 1}`;
     const isVideo = asset.isVideo || asset.ext === 'mp4';
-    
+
     if (isVideo) {
       return {
-        url: getCloudinaryVideoUrl(folder, fileName, asset.code),
+        url: `${CLOUDINARY_VIDEO_BASE}/${fileName}_${asset.code}.${asset.ext}`,
         isVideo: true
       };
     }
-    
+
     return {
-      url: getCloudinaryImageUrl(folder, fileName, asset.code, asset.ext),
+      url: `${CLOUDINARY_BASE}/${fileName}_${asset.code}.${asset.ext}`,
       isVideo: false
     };
   });

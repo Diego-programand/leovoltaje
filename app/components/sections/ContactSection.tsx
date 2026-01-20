@@ -64,8 +64,7 @@ export default function ContactSection() {
                                         </div>
                                         <div>
                                             <p className="text-white font-black uppercase tracking-widest text-xs mb-1">Cobertura</p>
-                                            <p className="text-xl font-semibold text-white">Toda Colombia</p>
-                                            <p className="text-sm text-gray-400">Proyectos residenciales e industriales</p>
+                                            <p className="text-xl font-semibold text-white">Antioquia - Medellin</p>
                                         </div>
                                     </div>
                                 </div>

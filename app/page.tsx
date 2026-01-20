@@ -2,6 +2,7 @@ import Header from './components/sections/Header';
 import Footer from './components/sections/Footer';
 import ServicesCarousel from './components/sections/ServicesCarousel';
 import ContactSection from './components/sections/ContactSection';
+import { getHeroVideoUrl } from './lib/cloudinary-config';
 
 
 export default function Home() {
@@ -11,13 +12,15 @@ export default function Home() {
     { val: "RETIE", label: "Normativa Legal", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
     { val: "Premium", label: "Materiales Certificados", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" }, // NUEVA
     { val: "Expertos", label: "Personal Calificado", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" }, // NUEVA
-    { val: "24/7", label: "Soporte Técnico", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7" },
-    { val: "+500", label: "Proyectos Listos", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5" },
+    { val: "Cobertura", label: "Medellin/Antioquía", icon: "M12 2a8 8 0 00-8 8c0 5.4 7.05 11.5 7.35 11.76a1 1 0 001.3 0C13 21.5 20 15.4 20 10a8 8 0 00-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z" },
+    { val: "+500", label: "Proyectos Listos", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" },
     { val: "Rápido", label: "Cotización Inmediata", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
   ];
 
   // Duplicamos las stats para que el scroll sea infinito
   const infiniteStats = [...stats, ...stats];
+
+  const videoCloudinary = getHeroVideoUrl('home');
   return (
     <>
       <Header />
@@ -32,15 +35,16 @@ export default function Home() {
               loop
               muted
               playsInline
+              key={videoCloudinary} // Ayuda a React a recargar si la URL cambia
               className="absolute inset-0 w-full h-full object-cover object-bottom"
             >
-              <source src="/videos/hero-background.mp4" type="video/mp4" />
-              <source src="/videos/hero-background.webm" type="video/webm" />
+              {/* Usamos la variable de Cloudinary en lugar de rutas locales */}
+              <source src={videoCloudinary} type="video/mp4" />
+              Tu navegador no soporta videos.
             </video>
-            {/* Overlay oscuro para legibilidad */}
+            {/* Overlay oscuro */}
             <div className="absolute inset-0 bg-gradient-to-b from-primary-5/90 via-primary-4/30 to-primary-3/20" />
           </div>
-
           {/* Content */}
           <div className="relative z-10 container mx-auto px-4 text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-sm mb-4 sm:mb-6 text-white animate-fade-in">
@@ -51,7 +55,7 @@ export default function Home() {
             </h2>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-primary-1 to-primary-2 hover:from-primary-2 hover:to-primary-3 text-white px-8 py-4 rounded-full font-bold text-base sm:text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-primary-1/50 transition-ease-in-out"
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-primary-2 to-primary-3 hover:from-primary-2 hover:to-primary-3 text-white px-8 py-4 rounded-full font-bold text-base sm:text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-primary-1/50 transition-ease-in-out"
             >
               {/* WhatsApp Icon */}
               <svg

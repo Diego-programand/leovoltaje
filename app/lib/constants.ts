@@ -1,60 +1,70 @@
 import { Service, NavLink } from './types';
+import { 
+  Zap, 
+  Smartphone, 
+  DraftingCompass, 
+  Sun, 
+  Settings2, 
+  FileCheck, 
+  Video, 
+  Network 
+} from 'lucide-react';
 
 export const SERVICES: Service[] = [
   {
     id: '1',
     title: 'Instalaciones Eléctricas',
     description: 'Diseños e instalaciones eléctricas profesionales para hogares y empresas.',
-    icon: '⚡',
+    icon: Zap, // Icono de energía limpia
     slug: 'instalaciones-electricas'
   },
   {
     id: '2',
     title: 'Instalación de Domótica',
     description: 'Convierte tu hogar en un espacio inteligente con nuestras soluciones domóticas.',
-    icon: '🏠',
+    icon: Smartphone, // Representa el control desde el móvil
     slug: 'domotica'
   },
   {
     id: '3',
     title: 'Diseño de Planos Eléctricos',
     description: 'Diseño y construcción de planos eléctricos y memorias de cálculo.',
-    icon: '📐',
+    icon: DraftingCompass, // Icono técnico de arquitectura/ingeniería
     slug: 'planos-electricos'
   },
   {
     id: '4',
     title: 'Energía Solar',
     description: 'Diseño e instalación de sistemas de energía fotovoltaica.',
-    icon: '☀️',
+    icon: Sun, // Claramente energía solar
     slug: 'energia-solar'
   },
   {
     id: '5',
-    title: 'Mantenimiento Preventivo y Correctivo',
+    title: 'Mantenimiento Preventivo',
     description: 'Mantenimiento de subestaciones, transformadores eléctricos y más.',
-    icon: '🔧',
+    icon: Settings2, // Transmite ajuste y precisión técnica
     slug: 'mantenimiento'
   },
   {
     id: '6',
-    title: 'Legalizaciones y Expediciones RETIE',
+    title: 'Legalizaciones RETIE',
     description: 'Inspecciones y legalizaciones RETIE y RETILAP.',
-    icon: '📋',
+    icon: FileCheck, // Un documento verificado (perfecto para normativas)
     slug: 'retie'
   },
   {
     id: '7',
     title: 'Diseño e Instalación de CCTV',
     description: 'Sistemas de vigilancia y seguridad para tu propiedad.',
-    icon: '📹',
+    icon: Video, // Cámara de seguridad profesional
     slug: 'cctv'
   },
   {
     id: '8',
     title: 'Instalación de Voz y Datos',
     description: 'Instalaciones y mantenimiento de redes de voz y datos.',
-    icon: '🌐',
+    icon: Network, // Representa infraestructura de red y servidores
     slug: 'voz-datos'
   }
 ];
