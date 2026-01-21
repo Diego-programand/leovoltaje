@@ -12,12 +12,12 @@ export interface CloudinaryAsset {
 // Imágenes del carousel (orden según SERVICES en constants.ts)
 export const CAROUSEL_IMAGES: CloudinaryAsset[] = [
   { code: 'aei7je', ext: 'jpg' }, // Index 0 -> service-1 (Instalaciones)
-  { code: 'ba07nn', ext: 'jpg' }, // Index 1 -> service-2 (Planos)
+  { code: 'orv0tu', ext: 'jpg' }, // Index 1 -> service-2 (Planos)
   { code: 'nhykdb', ext: 'jpg' }, // Index 2 -> service-3 (RETIE)
   { code: 'c2k7xn', ext: 'jpg' }, // Index 3 -> service-4 (Mantenimiento)
-  { code: 'eajyac', ext: 'jpg' }, // Index 4 -> service-5 (Energía Solar)
+  { code: 'ncjkgu', ext: 'jpg' }, // Index 4 -> service-5 (Energía Solar)
   { code: 'zegcwf', ext: 'jpg' }, // Index 5 -> service-6 (Domótica)
-  { code: 'lvnssy', ext: 'jpg' }, // Index 6 -> service-7 (CCTV)
+  { code: 'x0vjen', ext: 'jpg' }, // Index 6 -> service-7 (CCTV)
   { code: 'jowrsb', ext: 'jpg' }, // Index 7 -> service-8 (Voz y Datos)
 ];
 
@@ -150,7 +150,7 @@ export function getCloudinaryVideoUrl(
 export function getCarouselImageUrl(index: number): string {
   const asset = CAROUSEL_IMAGES[index];
   if (!asset) return '';
-  return `${CLOUDINARY_BASE}/service-${index + 1}_${asset.code}.${asset.ext}`;
+  return `${CLOUDINARY_BASE}/service-${index + 1}_${asset.code}.jpg`;
 }
 
 /**
