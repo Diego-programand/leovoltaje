@@ -12,11 +12,11 @@ export interface CloudinaryAsset {
 // Imágenes del carousel (orden según SERVICES en constants.ts)
 export const CAROUSEL_IMAGES: CloudinaryAsset[] = [
   { code: 'aei7je', ext: 'jpg' }, // service-1: instalaciones-electricas
-  { code: 'zegcwf', ext: 'jpg' }, // service-2: domotica
   { code: 'ba07nn', ext: 'jpg' }, // service-3: planos-electricos
-  { code: 'eajyac', ext: 'jpg' }, // service-4: energia-solar
-  { code: 'c2k7xn', ext: 'jpg' }, // service-5: mantenimiento
   { code: 'nhykdb', ext: 'jpg' }, // service-6: retie
+  { code: 'c2k7xn', ext: 'jpg' }, // service-5: mantenimiento
+  { code: 'eajyac', ext: 'jpg' }, // service-4: energia-solar
+  { code: 'zegcwf', ext: 'jpg' }, // service-2: domotica
   { code: 'lvnssy', ext: 'jpg' }, // service-7: cctv
   { code: 'jowrsb', ext: 'jpg' }, // service-8: voz-datos
 ];
