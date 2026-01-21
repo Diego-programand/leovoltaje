@@ -25,7 +25,7 @@ export default function ServiceHero({ title, description, videoSrc, imageSrc, ic
           <img
             src={imageSrc}
             alt={title}
-            className="absolute inset-0 w-full h-full object-cover object-center scale-110 blur-[6px]"
+            className="absolute inset-0 w-full h-full object-cover object-center scale-110 blur-[1px] brightness-75"
           />
         ) : null}
         <div className="absolute inset-0 bg-gradient-to-b from-primary-5/90 via-primary-4/30 to-primary-3/20" />
@@ -41,7 +41,7 @@ export default function ServiceHero({ title, description, videoSrc, imageSrc, ic
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white">
           {title}
         </h1>
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 max-w-3xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto">
           {description}
         </p>
       </div>
