@@ -106,8 +106,7 @@ export default function ServicesCarousel() {
                         transition={{ duration: 10, ease: "linear" }} // Zoom ultra lento y fluido
                         className="absolute inset-0 w-full h-full bg-cover"
                         style={{ 
-                            backgroundImage: `url('${getCarouselImageUrl(index)}')`,
-                            backgroundPosition: '80% center' 
+                            backgroundImage: `url('${getCarouselImageUrl(index)}')`, 
                         }}
                     >
                         <div className="absolute inset-0 bg-black/50 lg:bg-transparent lg:bg-gradient-to-r lg:from-black lg:via-black/60 lg:to-transparent" />

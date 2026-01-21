@@ -11,14 +11,14 @@ export interface CloudinaryAsset {
 
 // Imágenes del carousel (orden según SERVICES en constants.ts)
 export const CAROUSEL_IMAGES: CloudinaryAsset[] = [
-  { code: 'aei7je', ext: 'jpg' }, // service-1: instalaciones-electricas
-  { code: 'ba07nn', ext: 'jpg' }, // service-3: planos-electricos
-  { code: 'nhykdb', ext: 'jpg' }, // service-6: retie
-  { code: 'c2k7xn', ext: 'jpg' }, // service-5: mantenimiento
-  { code: 'eajyac', ext: 'jpg' }, // service-4: energia-solar
-  { code: 'zegcwf', ext: 'jpg' }, // service-2: domotica
-  { code: 'lvnssy', ext: 'jpg' }, // service-7: cctv
-  { code: 'jowrsb', ext: 'jpg' }, // service-8: voz-datos
+  { code: 'aei7je', ext: 'jpg' }, // Index 0 -> service-1 (Instalaciones)
+  { code: 'ba07nn', ext: 'jpg' }, // Index 1 -> service-2 (Planos)
+  { code: 'nhykdb', ext: 'jpg' }, // Index 2 -> service-3 (RETIE)
+  { code: 'c2k7xn', ext: 'jpg' }, // Index 3 -> service-4 (Mantenimiento)
+  { code: 'eajyac', ext: 'jpg' }, // Index 4 -> service-5 (Energía Solar)
+  { code: 'zegcwf', ext: 'jpg' }, // Index 5 -> service-6 (Domótica)
+  { code: 'lvnssy', ext: 'jpg' }, // Index 6 -> service-7 (CCTV)
+  { code: 'jowrsb', ext: 'jpg' }, // Index 7 -> service-8 (Voz y Datos)
 ];
 
 // Videos de hero para cada servicio
