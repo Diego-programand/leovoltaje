@@ -15,10 +15,10 @@ export const CAROUSEL_IMAGES: CloudinaryAsset[] = [
   { code: 'orv0tu', ext: 'jpg' }, // Index 1 -> service-2 (Planos)
   { code: 'nhykdb', ext: 'jpg' }, // Index 2 -> service-3 (RETIE)
   { code: 'c2k7xn', ext: 'jpg' }, // Index 3 -> service-4 (Mantenimiento)
-  { code: 'ncjkgu', ext: 'jpg' }, // Index 4 -> service-5 (Energía Solar)
-  { code: 'zegcwf', ext: 'jpg' }, // Index 5 -> service-6 (Domótica)
+  { code: 'srbtud', ext: 'jpg' }, // Index 4 -> service-5 (Energía Solar)
+  { code: 'caykkx', ext: 'jpg' }, // Index 5 -> service-6 (Domótica)
   { code: 'x0vjen', ext: 'jpg' }, // Index 6 -> service-7 (CCTV)
-  { code: 'jowrsb', ext: 'jpg' }, // Index 7 -> service-8 (Voz y Datos)
+  { code: 'qt8mkk', ext: 'jpg' }, // Index 7 -> service-8 (Voz y Datos)
 ];
 
 // Videos de hero para cada servicio
