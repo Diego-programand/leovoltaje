@@ -188,7 +188,7 @@ export default function RETIEPage() {
         { service: 'Asesoría técnica completa', icon: Users },
         { service: 'Revisión pre-inspección', icon: Search },
         { service: 'Elaboración de documentos', icon: FileText },
-        { service: 'Correcciones incluidas', icon: Wrench },
+        { service: 'Notificación de posibles correcciones', icon: Wrench },
         { service: 'Acompañamiento en inspección', icon: ShieldCheck },
         { service: 'Gestión ante organismos', icon: FileBadge },
         { service: 'Garantía de aprobación', icon: BadgeCheck },

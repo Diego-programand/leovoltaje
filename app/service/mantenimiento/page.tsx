@@ -37,8 +37,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Mantenimiento Eléctrico Industrial | Subestaciones y Transformadores',
-  description: 'Mantenimiento preventivo y correctivo de subestaciones, transformadores y tableros industriales. Personal certificado y equipos especializados en Colombia.',
+  title: 'Mantenimiento Eléctrico Preventivo, Correctivo y Predictivo | Subestaciones y Transformadores',
+  description: 'Mantenimiento preventivo y correctivo de subestaciones, transformadores y tableros de distribución. Personal certificado y equipos especializados en Colombia.',
 };
 
 export default function MantenimientoPage() {
@@ -87,12 +87,12 @@ export default function MantenimientoPage() {
       ]
     },
     {
-      title: 'Tableros de Distribución Industrial',
-      description: 'Mantenimiento preventivo y correctivo de tableros industriales para proteger circuitos, máquinas y equipos, evitando daños y paros de producción.',
+      title: 'Tableros de Distribución',
+      description: 'Mantenimiento preventivo y correctivo de tableros de distribución para proteger circuitos, máquinas y equipos, evitando daños y paros de producción.',
       icon: LayoutGrid,
       gradient: 'from-primary-3 to-primary-4',
       services: [
-        'Inspección termográfica de conexiones',
+        'Inspección de conexiones',
         'Limpieza profunda de componentes',
         'Ajuste de torque en bornes',
         'Medición de corrientes de carga',
@@ -201,7 +201,7 @@ export default function MantenimientoPage() {
       <main>
         {/* Hero Section */}
         <ServiceHero
-          title="Mantenimiento Eléctrico Industrial"
+          title="Mantenimiento Eléctrico  Preventivo y Correctivo"
           description="Mantén tus sistemas eléctricos operando con máxima eficiencia y seguridad"
           videoSrc={videoCloudinary}
 
@@ -236,7 +236,7 @@ export default function MantenimientoPage() {
               <div className="text-center mb-12">
                 <p className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6">
                   En <strong className="text-primary-3">Grupo Leovoltaje</strong> te brindamos la mejor alternativa 
-                  de mantenimiento eléctrico industrial con equipos especializados de última generación y 
+                  de mantenimiento eléctrico para tu hogar, comercio o industria con equipos especializados y 
                   técnicos certificados con años de experiencia.
                 </p>
                 <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
@@ -248,7 +248,7 @@ export default function MantenimientoPage() {
               {/* Stats mejorados */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
-                  { icon: Activity, stat: '+500', label: 'Mantenimientos anuales', color: 'text-blue-600', bgColor: 'bg-blue-50' },
+                  { icon: Activity, stat: '+60', label: 'Mantenimientos anuales', color: 'text-blue-600', bgColor: 'bg-blue-50' },
                   { icon: Factory, stat: '99.8%', label: 'Uptime garantizado', color: 'text-green-600', bgColor: 'bg-green-50' },
                   { icon: Users, stat: '20+', label: 'Técnicos certificados', color: 'text-orange-600', bgColor: 'bg-orange-50' },
                   { icon: Award, stat: '100%', label: 'Cumplimiento RETIE', color: 'text-purple-600', bgColor: 'bg-purple-50' }
@@ -532,7 +532,7 @@ export default function MantenimientoPage() {
                 agenda una inspección preventiva o solicita una cotización personalizada.
               </p>
               <a
-                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent('Hola, necesito programar mantenimiento eléctrico industrial')}`}
+                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent('Hola, necesito programar mantenimiento eléctrico')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-white text-primary-3 hover:bg-gray-100 px-10 py-5 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-2xl"

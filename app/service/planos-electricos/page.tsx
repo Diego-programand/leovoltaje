@@ -181,7 +181,7 @@ export default function PlanosElectricosPage() {
   const whyChooseUs = [
     {
       title: 'Ingenieros Certificados',
-      description: 'Diseños elaborados y firmados por ingenieros eléctricos con matrícula profesional vigente.',
+      description: 'Diseños elaborados y firmados por ingenieros eléctricistas con matrícula profesional vigente.',
       icon: GraduationCap,
       stat: 'Certificación profesional'
     },

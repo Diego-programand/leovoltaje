@@ -190,7 +190,7 @@ export default function VozDatosPage() {
           </div>
         </section>
 
-        <CloudinaryGallery serviceSlug="voz-datos" title="Portafolio de Redes e Infraestructura" />
+        <CloudinaryGallery serviceSlug="voz-datos" title="Galería de Redes y Datos" />
 
         {/* CTA - Ultra Moderno */}
         <section className="py-20">

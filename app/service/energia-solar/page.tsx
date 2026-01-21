@@ -59,14 +59,14 @@ export default function EnergiaSolarPage() {
       description: 'Libérate de los aumentos constantes en las tarifas eléctricas. Genera tu propia energía y protege tu economía.',
       icon: Zap,
       stat: 'Autosuficiencia',
-      gradient: 'from-yellow-400 to-orange-500'
+      gradient: 'from-green-400 to-emerald-500'
     },
     {
       title: 'Valoriza tu Propiedad',
       description: 'Una vivienda o negocio con sistema solar aumenta su valor comercial hasta un 20% en el mercado.',
       icon: TrendingUp,
       stat: '+20% valor',
-      gradient: 'from-purple-400 to-pink-500'
+      gradient: 'from-blue-400 to-cyan-500'
     }
   ];
 

@@ -45,7 +45,7 @@ export default function InstalacionesElectricasPage() {
         },
         {
             title: 'Sistemas de Puesta a Tierra',
-            description: 'Protección total contra sobrecargas mediante mallas de tierra y varillas de cobre certificadas.',
+            description: 'Protección total contra descargas atmosféricas mediante mallas de tierra y varillas de cobre certificadas.',
             icon: Unplug,
             types: ['Residencial', 'Comercial', 'Industrial']
         },
@@ -57,13 +57,13 @@ export default function InstalacionesElectricasPage() {
         },
         {
             title: 'Tableros de Control',
-            description: 'Montaje de centros de carga y distribución con breakers de alta precisión y peinado de cables.',
+            description: 'Montaje de tableros de control, potencia y distribución con breakers previamente seleccionados y peinado de cables.',
             icon: Box,
             types: ['Residencial', 'Comercial', 'Industrial']
         },
         {
             title: 'Circuitos Ramales',
-            description: 'Distribución estratégica de energía con balanceo de cargas para evitar puntos calientes.',
+            description: 'Optimización del balanceo de fases y distribución de cargas para suprimir sobrecargas y garantizar la integridad operativa del sistema. ',
             icon: GitMerge,
             types: ['Residencial', 'Comercial', 'Industrial']
         },
@@ -75,7 +75,7 @@ export default function InstalacionesElectricasPage() {
         },
         {
             title: 'Iluminación de Fachadas',
-            description: 'Proyectos arquitectónicos de iluminación exterior y seguridad perimetral.',
+            description: 'Proyectos eléctricos de iluminación exterior y seguridad perimetral.',
             icon: Sun,
             types: ['Comercial', 'Residencial']
         }
@@ -120,7 +120,7 @@ export default function InstalacionesElectricasPage() {
 
                             <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 w-full">
                                 {[
-                                    { t: 'Residencial', d: 'Hogares Inteligentes', i: Home, c: 'from-blue-500/10' },
+                                    { t: 'Residencial', d: 'Hogares', i: Home, c: 'from-blue-500/10' },
                                     { t: 'Comercial', d: 'Negocios Imparables', i: Building2, c: 'from-orange-500/10' },
                                     { t: 'Industrial', d: 'Plantas de Producción', i: Factory, c: 'from-primary-1/10' }
                                 ].map((item, idx) => (
@@ -207,7 +207,7 @@ export default function InstalacionesElectricasPage() {
 
                             {[
                                 { i: ShieldCheck, t: 'Garantía RETIE', d: 'Proyectos 100% aprobables para dictamen de inspección.' },
-                                { i: Cpu, t: 'Tecnología', d: 'Uso de analizadores de redes y herramientas de última generación.' },
+                                { i: Cpu, t: 'Tecnología', d: 'Herramientas preparadas para cada tipo de instalación.' },
                                 { i: Award, t: 'Certificación', d: 'Personal técnico con matrículas profesionales vigentes.' }
                             ].map((b, i) => (
                                 <div key={i} className="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
@@ -242,7 +242,7 @@ export default function InstalacionesElectricasPage() {
                                     <motion.a
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent('Hola, necesito una auditoría técnica para mi sistema eléctrico. Quiero garantizar seguridad y ahorro.')}`}
+                                        href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent('Hola, necesito asesoría en instalaciones eléctricas')}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-4 bg-white text-primary-3 px-10 py-5 rounded-full font-black text-xl shadow-2xl hover:bg-primary-2 hover:text-white transition-all group"
