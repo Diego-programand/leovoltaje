@@ -55,7 +55,7 @@ export default function Home() {
             </h2>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-primary-2 to-primary-3 hover:from-primary-2 hover:to-primary-3 text-white px-8 py-4 rounded-full font-bold text-base sm:text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-primary-1/50 transition-ease-in-out"
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-primary-3 to-primary-4 text-white px-8 py-4 rounded-full font-bold text-base sm:text-lg transition-all transform hover:scale-105 shadow-2xl hover:shadow-primary-3/50 transition-ease-in-out"
             >
               {/* WhatsApp Icon */}
               <svg

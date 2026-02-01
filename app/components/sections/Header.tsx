@@ -11,79 +11,94 @@ export default function Header() {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 20);
+        const handleScroll = () => setIsScrolled(window.scrollY > 50); // Un poco más de margen
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
+        <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled
+                ? 'bg-white/95 backdrop-blur-md shadow-lg py-1' // Se reduce a casi nada
+                : 'bg-transparent py-6' // Más alto al inicio para impacto visual
             }`}>
             <nav className="container mx-auto px-4 sm:px-8">
                 <div className="flex items-center justify-between">
-                    {/* LOGO */}
+
+                    {/* LOGO - Aquí está el truco del tamaño */}
                     <a href="/" className="flex items-center gap-4 group">
-                        <div className="relative w-14 h-14 sm:w-20 sm:h-20">
-                            <Image src="/favicon.svg" alt="Logo" fill className="object-contain transition-transform group-hover:scale-110" priority />
+                        <div className={`relative transition-all duration-500 ${isScrolled
+                                ? 'w-14 h-14' // Tamaño compacto al bajar
+                                : 'w-16 h-16 sm:w-18 sm:h-18' // Tamaño grande al inicio
+                            }`}>
+                            <Image src="/favicon.svg" alt="Logo" fill className="object-contain transition-transform group-hover:scale-105" priority />
                         </div>
                         <div className="flex flex-col text-left">
-                            <span className={`font-sm leading-none tracking-tighter text-xl sm:text-2xl ${isScrolled ? 'text-primary-5' : 'text-white'}`}>GRUPO</span>
-                            <span className={`font-sm leading-none tracking-tighter text-xl sm:text-2xl ${isScrolled ? 'text-primary-5' : 'text-white'}`}>LEOVOLTAJE</span>
+                            <span className={`font-bold leading-none tracking-tighter transition-all duration-500 ${isScrolled ? 'text-lg sm:text-xl text-primary-5 font-medium' : 'font-medium text-xl sm:text-2xl text-white'
+                                }`}>GRUPO</span>
+                            <span className={`font-bold leading-none tracking-tighter transition-all duration-500 ${isScrolled ? 'text-lg sm:text-xl text-primary-5 font-medium' : 'font-medium text-xl sm:text-2xl text-white'
+                                }`}>LEOVOLTAJE</span>
                         </div>
                     </a>
 
                     {/* DESKTOP NAVIGATION */}
                     <ul className="hidden md:flex items-center space-x-8">
                         {NAV_LINKS.map((link) => (
-                            <li key={link.href} className="relative group/item"
+                            <li key={link.href}
+                                className="relative group/item py-4" // Añadimos padding al li para ampliar el área de contacto
                                 onMouseEnter={() => link.label === 'Servicios' && setIsServicesOpen(true)}
                                 onMouseLeave={() => setIsServicesOpen(false)}>
 
-                                <a href={link.href} className={`font-sm text-s uppercase tracking-wide transition-colors ${isScrolled ? 'text-gray-700 hover:text-primary-1' : 'text-white hover:text-primary-1'
+                                <a href={link.href} className={`font-medium text-sm uppercase tracking-wider transition-colors ${isScrolled ? 'text-gray-700 hover:text-primary-1' : 'text-white hover:text-primary-1'
                                     }`}>
                                     {link.label}
                                 </a>
 
-                                {/* DESKTOP DROPDOWN LIST */}
+                                {/* DROPDOWN - Ajustado con el "puente" */}
                                 {link.label === 'Servicios' && (
                                     <AnimatePresence>
                                         {isServicesOpen && (
-                                            <motion.ul
+                                            /* Este contenedor div actúa como puente invisible */
+                                            <motion.div
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: 10 }}
-                                                className="absolute left-0 mt-2 w-72 bg-white shadow-2xl rounded-sm overflow-hidden py-2 border border-gray-100 z-50"
+                                                className="absolute left-0 top-full w-72 pt-2 z-50" // 'pt-2' es el espacio visual, pero es parte del área sensible
                                             >
-                                                {SERVICES.map((service, idx) => {
-                                                    // Asignamos el componente del icono a una variable con Mayúscula
-                                                    const ServiceIcon = service.icon;
-                                                    return (
-                                                        <li key={idx}>
-                                                            <a
-                                                                href={`/service/${service.slug}`}
-                                                                className="block px-4 py-3 text-sm text-black hover:bg-primary-1 hover:text-white transition-colors group/link"
-                                                            >
-                                                                <div className="flex items-center gap-3">
-                                                                    <ServiceIcon size={18} strokeWidth={2} className="text-primary-1 group-hover/link:text-white transition-colors" />
-                                                                    <span className="font-medium">{service.title}</span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    );
-                                                })}
-                                            </motion.ul>
+                                                <ul className="bg-white shadow-2xl overflow-hidden py-0 border border-gray-100">
+                                                    {SERVICES.map((service, idx) => {
+                                                        const ServiceIcon = service.icon;
+                                                        return (
+                                                            <li key={idx}>
+                                                                <a href={`/service/${service.slug}`} className="block px-4 py-3 text-sm text-black hover:bg-primary-1 hover:text-white transition-colors group/link">
+                                                                    <div className="flex items-center gap-3">
+                                                                        <ServiceIcon size={18} className="text-primary-1 group-hover/link:text-white transition-colors" />
+                                                                        <span className="font-medium">{service.title}</span>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        );
+                                                    })}
+                                                </ul>
+                                            </motion.div>
                                         )}
                                     </AnimatePresence>
                                 )}
                             </li>
                         ))}
-                        <a href={`https://wa.me/${COMPANY_INFO.whatsapp}`} target="_blank" className="bg-primary-1 text-white px-6 py-2 rounded-xl font-sm hover:bg-primary-2 transition-all shadow-lg active:scale-105 text-sm uppercase">
-                            WhatsApp
+
+                        {/* Botón WhatsApp dinámico */}
+                        <a href={`https://wa.me/${COMPANY_INFO.whatsapp}`}
+                            target="_blank"
+                            className={`rounded-full font-bold transition-all shadow-lg active:scale-95 text-xs uppercase tracking-widest ${isScrolled
+                                    ? 'bg-primary-3 text-white px-5 py-2'
+                                    : 'bg-white text-primary-5 px-6 py-3 hover:bg-primary-1 hover:text-white'
+                                }`}>
+                            Cotizar
                         </a>
                     </ul>
 
                     {/* MOBILE BUTTON */}
-                    <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={`md:hidden p-2 ${isScrolled ? 'text-primary-5' : 'text-white'}`}>
+                    <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={`md:hidden p-2 transition-colors ${isScrolled ? 'text-primary-5' : 'text-white'}`}>
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             {isMobileMenuOpen ? <path d="M6 18L18 6M6 6l12 12" strokeWidth={2.5} /> : <path d="M4 6h16M4 12h16M4 18h16" strokeWidth={2.5} />}
                         </svg>

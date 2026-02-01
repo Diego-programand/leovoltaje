@@ -67,9 +67,9 @@ export const GALLERY_IMAGES: Record<string, CloudinaryAsset[]> = {
     { code: 'u803wu', ext: 'jpg' },
   ],
   'planos-electricos': [
+    { code: 'hflx9q', ext: 'jpg' },
     { code: 'irxw7m', ext: 'jpg' },
     { code: 'h7r5wv', ext: 'jpg' },
-    { code: 'hflx9q', ext: 'jpg' },
   ],
   'voz-datos': [
     { code: 'vsjuq5', ext: 'jpg' },
