@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Instalaciones Eléctricas Profesionales en Medellín | Grupo Leovoltaje",
         description: "Instalaciones eléctricas residenciales, comerciales e industriales en Medellín. Acometidas, tableros, puesta a tierra bajo normativa RETIE.",
-        url: "https://grupoleovoltaje.com/service/instalaciones-electricas",
+        url: "https://grupoleovoltaje.com/servicios/instalaciones-electricas",
         type: "website",
     },
     twitter: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         description: "Instalaciones eléctricas residenciales, comerciales e industriales en Medellín. Acometidas, tableros y puesta a tierra bajo normativa RETIE.",
     },
     alternates: {
-        canonical: "https://grupoleovoltaje.com/service/instalaciones-electricas",
+        canonical: "https://grupoleovoltaje.com/servicios/instalaciones-electricas",
     },
 };
 

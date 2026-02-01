@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Energía Solar Fotovoltaica en Medellín | Grupo Leovoltaje",
         description: "Instalación de paneles solares y sistemas fotovoltaicos en Medellín. Diseño y montaje de energía solar para hogares y empresas.",
-        url: "https://grupoleovoltaje.com/service/energia-solar",
+        url: "https://grupoleovoltaje.com/servicios/energia-solar",
         type: "website",
     },
     twitter: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         description: "Instalación de paneles solares y sistemas fotovoltaicos en Medellín y Antioquia. Ahorro de energía garantizado.",
     },
     alternates: {
-        canonical: "https://grupoleovoltaje.com/service/energia-solar",
+        canonical: "https://grupoleovoltaje.com/servicios/energia-solar",
     },
 };
 

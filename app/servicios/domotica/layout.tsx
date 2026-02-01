@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Domótica y Hogares Inteligentes en Medellín | Grupo Leovoltaje",
         description: "Instalación de sistemas de domótica y hogares inteligentes en Medellín. Control automático de iluminación, seguridad y clima.",
-        url: "https://grupoleovoltaje.com/service/domotica",
+        url: "https://grupoleovoltaje.com/servicios/domotica",
         type: "website",
     },
     twitter: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         description: "Sistemas de domótica y hogares inteligentes en Medellín. Automatización profesional desde tu móvil.",
     },
     alternates: {
-        canonical: "https://grupoleovoltaje.com/service/domotica",
+        canonical: "https://grupoleovoltaje.com/servicios/domotica",
     },
 };
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Mantenimiento Eléctrico Industrial en Medellín | Grupo Leovoltaje",
         description: "Mantenimiento preventivo de subestaciones y transformadores en Medellín. Servicio industrial profesional para operación continua.",
-        url: "https://grupoleovoltaje.com/service/mantenimiento",
+        url: "https://grupoleovoltaje.com/servicios/mantenimiento",
         type: "website",
     },
     twitter: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         description: "Mantenimiento preventivo de subestaciones y transformadores eléctricos en Medellín y Antioquia.",
     },
     alternates: {
-        canonical: "https://grupoleovoltaje.com/service/mantenimiento",
+        canonical: "https://grupoleovoltaje.com/servicios/mantenimiento",
     },
 };
 

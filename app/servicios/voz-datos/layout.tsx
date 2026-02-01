@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Instalación de Redes Voz y Datos en Medellín | Grupo Leovoltaje",
         description: "Instalación de redes de voz y datos en Medellín. Cableado estructurado y redes empresariales profesionales.",
-        url: "https://grupoleovoltaje.com/service/voz-datos",
+        url: "https://grupoleovoltaje.com/servicios/voz-datos",
         type: "website",
     },
     twitter: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         description: "Redes de voz y datos profesionales en Medellín y Antioquia. Cableado estructurado para empresas.",
     },
     alternates: {
-        canonical: "https://grupoleovoltaje.com/service/voz-datos",
+        canonical: "https://grupoleovoltaje.com/servicios/voz-datos",
     },
 };
 

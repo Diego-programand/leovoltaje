@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Legalizaciones RETIE y RETILAP en Medellín | Grupo Leovoltaje",
         description: "Legalizaciones RETIE y RETILAP profesionales en Medellín. Inspecciones eléctricas y certificaciones para hogares y empresas.",
-        url: "https://grupoleovoltaje.com/service/retie",
+        url: "https://grupoleovoltaje.com/servicios/retie",
         type: "website",
     },
     twitter: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         description: "Legalizaciones RETIE y RETILAP profesionales en Medellín. Inspecciones y certificaciones eléctricas según normativa colombiana.",
     },
     alternates: {
-        canonical: "https://grupoleovoltaje.com/service/retie",
+        canonical: "https://grupoleovoltaje.com/servicios/retie",
     },
 };
 

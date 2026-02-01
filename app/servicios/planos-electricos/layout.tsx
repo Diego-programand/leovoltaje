@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Diseño de Planos Eléctricos en Medellín | Grupo Leovoltaje",
         description: "Diseño de planos eléctricos y memorias de cálculo profesionales en Medellín. Proyectos residenciales, comerciales e industriales bajo normativa RETIE.",
-        url: "https://grupoleovoltaje.com/service/planos-electricos",
+        url: "https://grupoleovoltaje.com/servicios/planos-electricos",
         type: "website",
     },
     twitter: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         description: "Diseño profesional de planos eléctricos y memorias de cálculo en Medellín bajo normativa RETIE y NTC.",
     },
     alternates: {
-        canonical: "https://grupoleovoltaje.com/service/planos-electricos",
+        canonical: "https://grupoleovoltaje.com/servicios/planos-electricos",
     },
 };
 
