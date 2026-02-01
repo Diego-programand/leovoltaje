@@ -103,15 +103,6 @@
   user-select: none;
 }
 
-/* Ajuste para que Lenis y el scroll nativo no peleen */
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
 /* Evita que los títulos queden tapados por el Header fijo */
 section[id] {
   scroll-margin-top: 100px;
