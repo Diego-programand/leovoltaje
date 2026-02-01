@@ -1,11 +1,4 @@
-type RobotsFile = {
-    userAgent: string;
-    allow?: string | string[];
-    disallow?: string | string[];
-    sitemapUrl?: string;
-};
-
-export default function robots(): RobotsFile {
+export default function robots() {
     return {
         userAgent: "*",
         allow: "/",
