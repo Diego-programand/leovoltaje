@@ -34,7 +34,7 @@ export default function sitemap(): SitemapEntry[] {
 
     // Páginas de cada servicio
     const servicePages = serviceSlugs.map((slug) => ({
-        url: `${baseUrl}/servicio/${slug}`,
+        url: `${baseUrl}/servicios/${slug}`,
         lastModified: today,
         changefreq: "monthly" as const,
         priority: slug === "instalaciones-electricas" || slug === "retie" || slug === "planos-electricos"
