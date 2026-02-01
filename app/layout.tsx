@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     ],
   },
   verification: {
-    google: "google-site-verification=ufFtqd8FNYmX63kLUYgKUNXvLcUoqbw-42xCcOZ54IM", // Google Search Console
+    google: "ufFtqd8FNYmX63kLUYgKUNXvLcUoqbw-42xCcOZ54IM", // Google Search Console
   },
   alternates: {
     canonical: "https://grupoleovoltaje.com",
@@ -140,7 +140,7 @@ export default function RootLayout({
                     },
                   ],
                   priceRange: "$$",
-                  sameAs: [],  // 👈 Si tienen Facebook, Instagram, etc. van aquí como URLs
+                  sameAs: [],  // Facebook, Instagram, etc. van aquí como URLs
                   hasOfferCatalog: {
                     "@type": "OfferCatalog",
                     name: "Servicios Eléctricos",
