@@ -13,20 +13,21 @@ const breeSerif = Bree_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL("https://grupoleovoltaje.com"),
   title: {
-    default: "Grupo Leovoltaje | Instalaciones Eléctricas y Legalizaciones RETIE en Medellín",
+    default: "Grupo Leovoltaje | Soluciones Eléctricas Profesionales en Medellín y Antioquia",
     template: "%s | Grupo Leovoltaje"
   },
-  description: "Instalaciones eléctricas, legalizaciones RETIE y diseño de planos eléctricos profesionales en Medellín y Antioquia. Más de 10 años de experiencia y 500+ proyectos completados.",
+  description: "Profesionales expertos en instalaciones eléctricas, legalizaciones RETIE, diseño de planos eléctricos profesionales, energia solar, domótica y seguridad en Medellín y Antioquia. Más de 10 años de experiencia y 500+ proyectos completados. ¡Cotiza tu proyecto hoy!",
   keywords: [
     "instalaciones eléctricas Medellín",
     "legalizaciones RETIE Antioquia",
+    "ingeniería eléctrica Colombia",
     "diseño planos eléctricos",
     "electricista Medellín",
     "empresa eléctrica Medellín",
     "legalización eléctrica Colombia",
     "energía solar Medellín",
     "domótica hogares Medellín",
-    "CCTV instalación Antioquia",
+    "instalación cámaras de seguridad Medellín",
     "mantenimiento eléctrico industrial",
     "Grupo Leovoltaje"
   ],
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     url: "https://grupoleovoltaje.com",
     siteName: "Grupo Leovoltaje",
     title: "Grupo Leovoltaje | Instalaciones Eléctricas y Legalizaciones RETIE en Medellín",
-    description: "Instalaciones eléctricas, legalizaciones RETIE y diseño de planos eléctricos profesionales en Medellín y Antioquia. 10+ años de experiencia.",
+    description: "Profesionales expertos en instalaciones eléctricas, legalizaciones RETIE, diseño de planos eléctricos profesionales, energia solar, domótica y seguridad en Medellín y Antioquia. Más de 10 años de experiencia y 500+ proyectos completados. ¡Cotiza tu proyecto hoy!",
     images: [
       {
         url: "/og-image.jpg",
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Grupo Leovoltaje | Instalaciones Eléctricas y Legalizaciones RETIE en Medellín",
-    description: "Instalaciones eléctricas, legalizaciones RETIE y diseño de planos eléctricos profesionales en Medellín y Antioquia.",
+    description: "Profesionales expertos en instalaciones eléctricas, legalizaciones RETIE, diseño de planos eléctricos profesionales, energia solar, domótica y seguridad en Medellín y Antioquia. Más de 10 años de experiencia y 500+ proyectos completados. ¡Cotiza tu proyecto hoy!",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -107,13 +108,13 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "LocalBusiness",
+                  "@type": "Electrician",
                   "@id": "https://grupoleovoltaje.com/#business",
                   name: "Grupo Leovoltaje",
                   image: "https://grupoleovoltaje.com/og-image.jpg",
                   logo: "https://grupoleovoltaje.com/icon-512x512.png",
                   url: "https://grupoleovoltaje.com",
-                  telephone: "+57 300 384 7833",
+                  telephone: "+573003847833",
                   email: "grupo.leovoltaje@gmail.com",
                   address: {
                     "@type": "PostalAddress",
@@ -143,7 +144,7 @@ export default function RootLayout({
                   sameAs: [],  // Facebook, Instagram, etc. van aquí como URLs
                   hasOfferCatalog: {
                     "@type": "OfferCatalog",
-                    name: "Servicios Eléctricos",
+                    name: "Servicios Eléctricos Profesionales",
                     itemOffered: [
                       {
                         "@type": "Service",
