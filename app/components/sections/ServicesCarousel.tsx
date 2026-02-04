@@ -42,15 +42,15 @@ export default function ServicesCarousel() {
 
     const textVariants: Variants = {
         enter: { y: 30, opacity: 0 },
-        center: { 
-            y: 0, 
-            opacity: 1, 
-            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+        center: {
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
         },
-        exit: { 
-            y: -20, 
-            opacity: 0, 
-            transition: { duration: 0.3 } 
+        exit: {
+            y: -20,
+            opacity: 0,
+            transition: { duration: 0.3 }
         }
     };
 
@@ -71,13 +71,13 @@ export default function ServicesCarousel() {
             {/* HINT TÁCTIL */}
             <AnimatePresence>
                 {showHint && (
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className="lg:hidden absolute inset-0 z-[60] flex items-center justify-center pointer-events-none"
                     >
-                        <motion.div 
+                        <motion.div
                             animate={{ x: [-20, 20, -20] }}
                             transition={{ duration: 2, repeat: Infinity }}
                             className="bg-black/30 backdrop-blur-md p-5 rounded-full border border-white/20"
@@ -105,8 +105,8 @@ export default function ServicesCarousel() {
                         animate={{ scale: 1 }}
                         transition={{ duration: 10, ease: "linear" }} // Zoom ultra lento y fluido
                         className="absolute inset-0 w-full h-full bg-cover"
-                        style={{ 
-                            backgroundImage: `url('${getCarouselImageUrl(index)}')`, 
+                        style={{
+                            backgroundImage: `url('${getCarouselImageUrl(index)}')`,
                         }}
                     >
                         <div className="absolute inset-0 bg-black/50 lg:bg-transparent lg:bg-gradient-to-r lg:from-black lg:via-black/60 lg:to-transparent" />
@@ -139,7 +139,7 @@ export default function ServicesCarousel() {
 
                                 <div className="pt-4">
                                     <a
-                                        href={`/service/${SERVICES[index]?.slug}`}
+                                        href={`/servicios/${SERVICES[index]?.slug}`}
                                         className="inline-block px-8 py-4 bg-primary-3 text-white font-bold rounded-sm hover:bg-primary-4 hover:scale-105 transition-transform active:scale-95 shadow-xl uppercase tracking-widest text-sm"
                                     >
                                         Ver detalles
@@ -153,13 +153,13 @@ export default function ServicesCarousel() {
 
             {/* BOTONES */}
             <div className="absolute bottom-8 right-6 lg:bottom-12 lg:right-16 flex items-center z-50">
-                <button 
+                <button
                     onClick={() => handleManualNav(-1)}
                     className="p-4 lg:p-6 text-white/50 hover:text-white transition-all bg-white/5 hover:bg-white/10 backdrop-blur-lg border border-white/10 rounded-l-md"
                 >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                 </button>
-                <button 
+                <button
                     onClick={() => handleManualNav(1)}
                     className="p-4 lg:p-6 text-white/50 hover:text-white transition-all bg-white/5 hover:bg-white/10 backdrop-blur-lg border border-white/10 border-l-0 rounded-r-md"
                 >
@@ -177,9 +177,8 @@ export default function ServicesCarousel() {
                             setIndex(idx);
                             setIsPaused(true);
                         }}
-                        className={`transition-all duration-500 ${
-                            idx === index ? 'h-10 w-[3px] bg-primary-1' : 'h-4 w-[2px] bg-white/20 hover:bg-white/40'
-                        }`}
+                        className={`transition-all duration-500 ${idx === index ? 'h-10 w-[3px] bg-primary-1' : 'h-4 w-[2px] bg-white/20 hover:bg-white/40'
+                            }`}
                     />
                 ))}
             </div>

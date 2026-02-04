@@ -77,6 +77,6 @@ export const NAV_LINKS: NavLink[] = [
 
 export const COMPANY_INFO = {
   name: 'Grupo Leovoltaje',
-  email: 'grupo.leovoltaje@gmail.com', // Coloca el email real
-  whatsapp: '573003847833', // Coloca el número de WhatsApp (con código de país, sin +)
+  email: 'grupo.leovoltaje@gmail.com', // Email real
+  whatsapp: '573003847833', // Número de WhatsApp
 };

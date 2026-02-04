@@ -18,8 +18,8 @@ export default function Header() {
 
     return (
         <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled
-                ? 'bg-white/95 backdrop-blur-md shadow-lg py-1' // Se reduce a casi nada
-                : 'bg-transparent py-6' // Más alto al inicio para impacto visual
+            ? 'bg-white/95 backdrop-blur-md shadow-lg py-1' // Se reduce a casi nada
+            : 'bg-transparent py-6' // Más alto al inicio para impacto visual
             }`}>
             <nav className="container mx-auto px-4 sm:px-8">
                 <div className="flex items-center justify-between">
@@ -27,8 +27,8 @@ export default function Header() {
                     {/* LOGO - Aquí está el truco del tamaño */}
                     <a href="/" className="flex items-center gap-4 group">
                         <div className={`relative transition-all duration-500 ${isScrolled
-                                ? 'w-14 h-14' // Tamaño compacto al bajar
-                                : 'w-16 h-16 sm:w-18 sm:h-18' // Tamaño grande al inicio
+                            ? 'w-14 h-14' // Tamaño compacto al bajar
+                            : 'w-16 h-16 sm:w-18 sm:h-18' // Tamaño grande al inicio
                             }`}>
                             <Image src="/favicon.svg" alt="Logo" fill className="object-contain transition-transform group-hover:scale-105" priority />
                         </div>
@@ -69,7 +69,7 @@ export default function Header() {
                                                         const ServiceIcon = service.icon;
                                                         return (
                                                             <li key={idx}>
-                                                                <a href={`/service/${service.slug}`} className="block px-4 py-3 text-sm text-black hover:bg-primary-1 hover:text-white transition-colors group/link">
+                                                                <a href={`/servicios/${service.slug}`} className="block px-4 py-3 text-sm text-black hover:bg-primary-1 hover:text-white transition-colors group/link">
                                                                     <div className="flex items-center gap-3">
                                                                         <ServiceIcon size={18} className="text-primary-1 group-hover/link:text-white transition-colors" />
                                                                         <span className="font-medium">{service.title}</span>
@@ -90,8 +90,8 @@ export default function Header() {
                         <a href={`https://wa.me/${COMPANY_INFO.whatsapp}`}
                             target="_blank"
                             className={`rounded-full font-bold transition-all shadow-lg active:scale-95 text-xs uppercase tracking-widest ${isScrolled
-                                    ? 'bg-primary-3 text-white px-5 py-2'
-                                    : 'bg-white text-primary-5 px-6 py-3 hover:bg-primary-1 hover:text-white'
+                                ? 'bg-primary-3 text-white px-5 py-2'
+                                : 'bg-white text-primary-5 px-6 py-3 hover:bg-primary-1 hover:text-white'
                                 }`}>
                             Cotizar
                         </a>
@@ -141,7 +141,7 @@ export default function Header() {
                                                                     // Dentro de SERVICES.map en el menú móvil
                                                                     <motion.a
                                                                         key={i}
-                                                                        href={`/service/${s.slug}`}
+                                                                        href={`/servicios/${s.slug}`}
                                                                         whileTap={{ scale: 0.95, backgroundColor: "rgba(0, 0, 0, 0.05)" }} // Efecto de presión
                                                                         onClick={() => {
                                                                             setIsMobileMenuOpen(false);
