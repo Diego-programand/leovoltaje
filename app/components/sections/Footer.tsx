@@ -103,8 +103,8 @@ export default function Footer() {
           <p>Pagina web: OwlyDev</p>
           <p>&copy; 2016 - 2026 {COMPANY_INFO.name}. Todos los derechos reservados.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Política de Privacidad</a>
-            <a href="#" className="hover:text-white transition-colors">Términos de Servicio</a>
+            <a href="/politica-de-privacidad" className="hover:text-white transition-colors text-xs">Política de Privacidad</a>
+            <a href="/terminos-de-uso" className="hover:text-white transition-colors text-xs">Términos de Servicio</a>
           </div>
         </div>
       </div>
